@@ -1,12 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import HomePage from './containers/HomePage';
+import VisitsListWrapper from './containers/VisitsList';
+
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom"; 
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<HomePage />}>
+      <Route path='visits' element={<VisitsListWrapper />}></Route>
+    </Route>
+  )
+);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>,
   document.getElementById('root')
 );
