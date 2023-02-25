@@ -4,7 +4,7 @@ import { getEventRoutes } from '../routes/getEvents';
 function getRoutes(): express.Router {
   const router = express.Router();
 
-  router.use("/", getEventRoutes());
+  router.use('/', getEventRoutes());
 
   return router;
 }
