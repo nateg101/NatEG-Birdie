@@ -1,17 +1,44 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import LinkButton from '../../components/LinkButton/LinkButton';
-import { VisitItem, VisitItemContainer, Detail } from '../../components/VisitItem/VisitItem';
+import {
+  VisitItem,
+  VisitItemContainer,
+  Detail,
+} from '../../components/VisitItem/VisitItem';
 import { constructGetEventsCall } from '../../helpers';
-import { NavBar, CenteredHeader, VisitsWrapper, DateWrapper, Label } from './ListComponents';
+import {
+  NavBar,
+  CenteredHeader,
+  VisitsWrapper,
+  DateWrapper,
+  Label,
+  OuterVisitContainer,
+} from './ListComponents';
+
+const VisitItemContainerHeader = styled(VisitItemContainer)`
+  font-weight: 600;
+  cursor: auto;
+  &:hover {
+    background-color: #ffff;
+  }
+`
+
 
 function VisitsListWrapper(): React.ReactElement {
   const [loading, setLoading] = useState(true);
   const [visits, setVisits] = useState([]);
   const [error, setError] = useState(false);
-  const [startEndDate, setStartEndDate] = useState({startDate: '', endDate: ''});
- 
+  const [startEndDate, setStartEndDate] = useState({
+    startDate: '',
+    endDate: '',
+  });
+
   useEffect(() => {
-    const endpoint = constructGetEventsCall(startEndDate.startDate, startEndDate.endDate)
+    const endpoint = constructGetEventsCall(
+      startEndDate.startDate,
+      startEndDate.endDate
+    );
     fetch(`${endpoint}`)
       .then((res) => res.json())
       .then((results) => {
@@ -48,47 +75,49 @@ function VisitsListWrapper(): React.ReactElement {
       </NavBar>
       <DateWrapper className="date-selector">
         <Label>
-          Start Date: 
+          Start Date:
           <input
             type="date"
             name="Start Date"
-            value={startEndDate.startDate}
-            onChange={(e) =>
+            // value={startEndDate.startDate}
+            onBlur={(e) =>
               setStartEndDate({ ...startEndDate, startDate: e.target.value })
             }
           />
         </Label>
         <Label>
-          End Date: 
+          End Date:
           <input
             type="date"
             name="End Date"
-            value={startEndDate.endDate}
-            onChange={(e) =>
+            // value={startEndDate.endDate}
+            onBlur={(e) =>
               setStartEndDate({ ...startEndDate, endDate: e.target.value })
             }
           />
         </Label>
       </DateWrapper>
-      <VisitItemContainer>
-        <Detail>Date Of Visit</Detail>
-        <Detail>ID of Recipient</Detail>
-        <Detail>Type of Visit</Detail>
-      </VisitItemContainer>
-      {loading ? (
-        <div className="loading">Loading ...</div>
-      ) : (
-        visits.length > 0 &&
-        visits.map((visitData: any) => {
-          return <VisitItem key={visitData.id} visit={visitData} />;
-        })
-      )}
-      {!loading && !error && visits.length === 0 && (
-        <div className="no-visits">
-          There are no visits that match your criteria - please try again
-        </div>
-      )}
-      {error && returnError()}
+      <OuterVisitContainer>
+        <VisitItemContainerHeader>
+          <Detail>Date Of Visit</Detail>
+          <Detail>ID of Recipient</Detail>
+          <Detail>Type of Visit</Detail>
+        </VisitItemContainerHeader>
+        {loading ? (
+          <div className="loading">Loading ...</div>
+        ) : (
+          visits.length > 0 &&
+          visits.map((visitData: any) => {
+            return <VisitItem key={visitData.id} visit={visitData} />;
+          })
+        )}
+        {!loading && !error && visits.length === 0 && (
+          <div className="no-visits">
+            There are no visits that match your criteria - please try again
+          </div>
+        )}
+        {error && returnError()}
+      </OuterVisitContainer>
     </VisitsWrapper>
   );
 }

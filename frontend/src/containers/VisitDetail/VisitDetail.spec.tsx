@@ -15,8 +15,8 @@ describe('Visit Detail component', () => {
         open={true}
       />
     );
-    expect(screen.getByText(header)).toBeInTheDocument()
-    
+    expect(screen.getByText(header)).toBeInTheDocument();
+
     expect(
       screen.getByText(
         `Date of Visit: ${new Date(

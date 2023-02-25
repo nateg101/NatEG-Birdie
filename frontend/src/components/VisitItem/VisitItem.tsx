@@ -7,14 +7,9 @@ import { parseEventType } from '../../helpers';
 export const VisitItemContainer = styled.div`
   display: grid;
   grid-auto-columns: minmax(0, 1fr);
-  grid-auto-flow: column; 
-  border-style: solid;
-  border-color: #00264d;
-  width: 85%;
+  grid-auto-flow: column;
   justify-content: space-between;
   cursor: pointer;
-  margin-left: auto;
-  margin-right: auto;
   &:hover {
     background-color: #e2f5f5;
   }

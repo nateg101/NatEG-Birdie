@@ -15,11 +15,19 @@ export const VisitsWrapper = styled.div`
 `;
 
 export const DateWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 1rem;
 `;
 
 export const Label = styled.label`
   padding: 0.5rem;
+`;
+
+export const OuterVisitContainer = styled.div`
+  border-style: solid;
+  border-color: #00264d;
+  max-width: 85%;
+  margin-left: auto;
+  margin-right: auto;
 `;

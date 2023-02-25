@@ -1,4 +1,3 @@
-
 export function parseEventType(eventType: string): string {
   //will just remove '_' for now but this may need to be expanded
   return eventType.replaceAll('_', ' ');
@@ -13,27 +12,30 @@ export function formatTimeStamp(timestamp: string): string {
   return `${hours}: ${formattedMins}`;
 }
 
-export  function constructGetEventsCall(startDate: string | undefined, endDate: string | undefined): string {
-  const startQuery = startDate ? `start=${startDate}` : null
-  const endQuery = endDate ? `end=${endDate}` : null
-  let endpoint = 'http://localhost:8000/events'
-  let queryParams 
+export function constructGetEventsCall(
+  startDate: string | undefined,
+  endDate: string | undefined
+): string {
+  const startQuery = startDate ? `start=${startDate}` : null;
+  const endQuery = endDate ? `end=${endDate}` : null;
+  let endpoint = 'http://localhost:8000/events';
+  let queryParams;
 
- if (endQuery && startQuery) {
-    queryParams = `${startQuery}&${endQuery}`
-  } 
-
-  if(startQuery && !endQuery) {
-    queryParams = startQuery
+  if (endQuery && startQuery) {
+    queryParams = `${startQuery}&${endQuery}`;
   }
 
-  if(endQuery && !startQuery) {
-    queryParams = endQuery
+  if (startQuery && !endQuery) {
+    queryParams = startQuery;
   }
 
-  if(queryParams) {
-    endpoint = `${endpoint}?${queryParams}`
+  if (endQuery && !startQuery) {
+    queryParams = endQuery;
   }
 
-  return endpoint
+  if (queryParams) {
+    endpoint = `${endpoint}?${queryParams}`;
+  }
+
+  return endpoint;
 }
