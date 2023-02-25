@@ -1,4 +1,3 @@
-import { Visit } from "../shared/interfaces";
 
 export function parseEventType(eventType: string): string {
   //will just remove '_' for now but this may need to be expanded

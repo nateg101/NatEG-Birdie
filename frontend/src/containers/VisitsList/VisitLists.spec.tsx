@@ -1,4 +1,5 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import VisitsListWrapper from './VisitsList';
 import { parseEventType } from '../../helpers';
@@ -24,7 +25,7 @@ afterAll(() => {
 
 describe('Visit List Wrapper', () => {
   it('renders a list of visits when API call is successful', async () => {
-    render(<VisitsListWrapper />);
+    render(<VisitsListWrapper />, {wrapper: MemoryRouter});
     expect(screen.getByText('Loading ...')).toBeInTheDocument();
 
     const firstVisitItem = mockVisitResponse[0];
@@ -58,7 +59,7 @@ describe('Visit List Wrapper', () => {
       })
     );
 
-    render(<VisitsListWrapper />);
+    render(<VisitsListWrapper />, {wrapper: MemoryRouter});
     expect(screen.getByText('Loading ...')).toBeInTheDocument();
 
     await waitFor(() =>
@@ -77,11 +78,11 @@ describe('Visit List Wrapper', () => {
       })
     );
 
-    render(<VisitsListWrapper />);
+    render(<VisitsListWrapper />, {wrapper: MemoryRouter});
     expect(screen.getByText('Loading ...')).toBeInTheDocument();
     await waitFor(() =>
       expect(
-        screen.getByText('There are no visits that match your criteria')
+        screen.getByText('There are no visits that match your criteria - please try again')
       ).toBeInTheDocument()
     );
   });

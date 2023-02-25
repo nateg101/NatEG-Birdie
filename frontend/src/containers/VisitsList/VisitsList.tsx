@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import LinkButton from '../../components/LinkButton/LinkButton';
-import { VisitItem } from '../../components/VisitItem/VisitItem';
+import { VisitItem, VisitItemContainer, Detail } from '../../components/VisitItem/VisitItem';
 import { constructGetEventsCall } from '../../helpers';
 import { NavBar, CenteredHeader, VisitsWrapper, DateWrapper, Label } from './ListComponents';
 
@@ -70,6 +70,11 @@ function VisitsListWrapper(): React.ReactElement {
           />
         </Label>
       </DateWrapper>
+      <VisitItemContainer>
+        <Detail>Date Of Visit</Detail>
+        <Detail>ID of Recipient</Detail>
+        <Detail>Type of Visit</Detail>
+      </VisitItemContainer>
       {loading ? (
         <div className="loading">Loading ...</div>
       ) : (
@@ -80,7 +85,7 @@ function VisitsListWrapper(): React.ReactElement {
       )}
       {!loading && !error && visits.length === 0 && (
         <div className="no-visits">
-          There are no visits that match your criteria
+          There are no visits that match your criteria - please try again
         </div>
       )}
       {error && returnError()}

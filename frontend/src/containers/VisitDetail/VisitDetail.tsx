@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Modal from '@mui/material/Modal';
 import { parseEventType, formatTimeStamp } from '../../helpers';
@@ -42,6 +42,7 @@ export function VisitDetail({
   return (
     <VisitModal open={open} onClose={handleClose}>
       <VisitWrapper>
+        <h3>Details of Visit</h3>
         <p>
           {`Date of Visit: ${new Date(Date.parse(timestamp)).toDateString()}`}
         </p>

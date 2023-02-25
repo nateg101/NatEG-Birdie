@@ -4,6 +4,8 @@ import { VisitDetail } from './VisitDetail';
 import { parseEventType, formatTimeStamp } from '../../helpers';
 import { mockFoodIntakeProps } from '../../mocks/mockVisitItem';
 
+const header = 'Details of Visit';
+
 describe('Visit Detail component', () => {
   it('renders the detail of a food intake visit', () => {
     render(
@@ -13,6 +15,8 @@ describe('Visit Detail component', () => {
         open={true}
       />
     );
+    expect(screen.getByText(header)).toBeInTheDocument()
+    
     expect(
       screen.getByText(
         `Date of Visit: ${new Date(

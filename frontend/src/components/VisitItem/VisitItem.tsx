@@ -4,9 +4,10 @@ import { VisitDetail } from '../../containers/VisitDetail/VisitDetail';
 import { VisitItemProps } from '../../shared/interfaces';
 import { parseEventType } from '../../helpers';
 
-const VisitItemContainer = styled.div`
-  display: flex;
-  flex-direction: row;
+export const VisitItemContainer = styled.div`
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column; 
   border-style: solid;
   border-color: #00264d;
   width: 85%;
@@ -19,7 +20,7 @@ const VisitItemContainer = styled.div`
   }
 `;
 
-const Detail = styled.span`
+export const Detail = styled.span`
   padding: 1rem;
 `;
 
