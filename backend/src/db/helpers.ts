@@ -15,5 +15,10 @@ export function eventQueryBuilder(start: string, end: string): string {
 
   dbQuery = `${dbQuery} ORDER BY timestamp DESC`;
 
+  if (!end && !start) {
+    //as default if no time is passed we will limit to most recent 50 events
+    dbQuery = `${dbQuery} LIMIT 50`;
+  }
+
   return dbQuery;
 }

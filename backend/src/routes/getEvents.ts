@@ -18,12 +18,12 @@ function getEvents(
 
   dbConnection.query(dbQuery, function (err, results) {
     if (err) throw new Error(err.message);
+    // required for localhost testing - would need to be adapted with relevant CORS policy
     response.append('Access-Control-Allow-Origin', 'http://localhost:3000');
     const data = results.map((obj: any) => {
       const rawData = Object.assign({}, obj);
       return JSON.parse(rawData.payload);
     });
-
     response.send(data);
   });
 }
