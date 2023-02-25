@@ -12,6 +12,8 @@ const VisitItemContainer = styled.div`
   width: 85%;
   justify-content: space-between;
   cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
   &:hover {
     background-color: #e2f5f5;
   }

@@ -42,13 +42,17 @@ export function VisitDetail({
   return (
     <VisitModal open={open} onClose={handleClose}>
       <VisitWrapper>
-        <p> {`Date of Visit: ${new Date(Date.parse(timestamp)).toDateString()}`}</p>
+        <p>
+          {`Date of Visit: ${new Date(Date.parse(timestamp)).toDateString()}`}
+        </p>
         <p> {`Time of Visit: ${formatTimeStamp(timestamp)}`}</p>
         {event_type && !task_definition_description && (
           <p>{`Nature of Visit: ${parseEventType(event_type)}`}</p>
         )}
         {task_definition_description && (
-          <p> {`Nature of Visit: ${parseEventType(task_definition_description)}`}</p>
+          <p>
+            {`Nature of Visit: ${parseEventType(task_definition_description)}`}
+          </p>
         )}
         {
           // if there is a meal then the note describes what was eaten

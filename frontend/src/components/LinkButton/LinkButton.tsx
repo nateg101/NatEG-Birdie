@@ -12,6 +12,7 @@ const LinkButton = styled(Link)`
   position: relative;
   text-decoration: none;
   color: #ffff;
+  height: fit-content;
 `;
 
 export default LinkButton;
