@@ -29,6 +29,7 @@ function VisitsListWrapper(): React.ReactElement {
 
   return (
     <div className="visits-wrapper">
+      <h1>Visits</h1>
       {loading ? (
         <div className="loading">Loading ...</div>
       ) : (

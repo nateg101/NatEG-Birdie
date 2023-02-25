@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import VisitsListWrapper from './VisitsList';
-import { parseEventType } from '../../components/VisitItem/VisitItem';
+import { parseEventType } from '../../helpers';
 import { mockVisitResponse } from '../../mocks/mockVisitsResponse';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';

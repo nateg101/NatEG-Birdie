@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HomePage from './containers/HomePage';
-import VisitsListWrapper from './containers/VisitsList';
+import HomePage from './containers/HomePage/HomePage';
+import VisitsListWrapper from './containers/VisitsList/VisitsList';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
