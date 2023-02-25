@@ -1,6 +1,6 @@
 import React from 'react';
-import AppWrapper from '../components/AppWrapper/AppWrapper';
-import LinkButton from '../components/LinkButton/LinkButton';
+import AppWrapper from '../../components/AppWrapper/AppWrapper';
+import LinkButton from '../../components/LinkButton/LinkButton';
 
 function HomePage(): React.ReactElement {
   return (

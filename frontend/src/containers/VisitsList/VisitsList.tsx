@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { VisitItem } from '../components/VisitItem/VisitItem';
+import { VisitItem } from '../../components/VisitItem/VisitItem';
 
 function VisitsListWrapper(): React.ReactElement {
   const [loading, setLoading] = useState(true);
@@ -19,6 +19,14 @@ function VisitsListWrapper(): React.ReactElement {
       });
   }, []);
 
+  function returnError(): any {
+    return (
+      <div className="visits-error-message">
+        There was an error, please contact our support team if this persists
+      </div>
+    );
+  }
+
   return (
     <div className="visits-wrapper">
       {loading ? (
@@ -26,9 +34,15 @@ function VisitsListWrapper(): React.ReactElement {
       ) : (
         visits.length > 0 &&
         visits.map((visitData: any) => {
-          return <VisitItem visit={visitData} />;
+          return <VisitItem key={visitData.id} visit={visitData} />;
         })
       )}
+      {!loading && !error && visits.length === 0 && (
+        <div className="no-visits">
+          There are no visits that match your criteria
+        </div>
+      )}
+      {error && returnError()}
     </div>
   );
 }
